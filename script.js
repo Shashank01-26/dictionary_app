@@ -2,6 +2,16 @@ const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
+const accessKey = '5h6DA4DRsKTiWf5KOMXnxqUTJ0rANz4-ESuQXrYXjts';
+const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&query=dictionary`;
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    const imageUrl = data.urls.regular;
+    document.body.style.backgroundImage = `url(${imageUrl})`;
+  })
+  .catch(error => console.error(error));
 
 btn.addEventListener("click", () => {
     let inpWord = document.getElementById("inp-word").value;
